@@ -94,38 +94,68 @@ header.top{position:absolute;left:0;right:0;z-index:20}
 .pledge{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem}
 .pledge li{list-style:none;background:var(--mist);border-radius:100px;padding:.5rem 1rem;font-size:.88rem;font-weight:500;color:var(--navy)}
 
-/* services: typographic index with porthole photos */
-.services{background:var(--navy);color:#fff;padding:6.5rem 0;position:relative;overflow:hidden}
-.services::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 119px,rgba(255,255,255,.04) 119px 120px)}
+/* services: window blinds */
+.services{background:var(--ink);color:#fff;padding:6.5rem 0 7rem;position:relative;overflow:hidden}
+.services::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 0,rgba(95,179,230,.22),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(53,73,93,.9),transparent 60%)}
 .services .head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;position:relative;flex-wrap:wrap}
-.services h2{font-size:clamp(2.2rem,4.5vw,3.8rem);max-width:14ch}
+.services h2{font-size:clamp(2.2rem,4.5vw,3.8rem);max-width:20ch}
 .services .eyebrow{color:var(--glass)}
-.list{position:relative;border-top:1px solid rgba(255,255,255,.2)}
-.item{display:grid;grid-template-columns:70px 1fr 150px 56px;align-items:center;gap:1.5rem;padding:1.15rem 0;border-bottom:1px solid rgba(255,255,255,.2);transition:.3s;position:relative}
-.item .n{font:700 .9rem var(--body);color:var(--glass);letter-spacing:.1em}
-.item h3{font-size:clamp(1.5rem,3.3vw,2.7rem);font-weight:700;transition:.3s}
-.item .ph{width:104px;height:104px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.9);justify-self:end;transform:scale(.8);opacity:.55;transition:.35s;background:var(--navy-2);display:grid;place-items:center}
-.item .ph img{width:100%;height:100%;object-fit:cover}
-.item .ph svg{width:46px;height:46px;stroke:var(--glass);fill:none;stroke-width:1.6}
-.item .go{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:.3s}
-.item:hover{padding-left:1.2rem;background:rgba(255,255,255,.05)}
-.item:hover h3{color:var(--glass)}
-.item:hover .ph{transform:scale(1);opacity:1}
-.item:hover .go{background:var(--glass);border-color:var(--glass);color:var(--ink);transform:rotate(-45deg)}
-.item small{display:block;font:400 .9rem var(--body);color:#b7c9d9;margin-top:.35rem;letter-spacing:0}
+.blinds{position:relative;display:flex;gap:10px;height:520px}
+.rail{position:absolute;left:-14px;right:-14px;top:-16px;height:12px;background:linear-gradient(#5a7289,#2b3d4e);border-radius:6px;box-shadow:0 8px 16px -6px rgba(0,0,0,.6)}
+.slat{position:relative;flex:1;min-width:0;border-radius:0 0 14px 14px;overflow:hidden;cursor:pointer;outline:none;color:#fff;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 2px,transparent 2px 14px),linear-gradient(170deg,var(--c1),var(--c2));
+  transition:flex .7s cubic-bezier(.7,0,.2,1),box-shadow .5s;box-shadow:0 20px 30px -18px rgba(0,0,0,.7)}
+.slat:nth-child(2){--c1:#3d566d;--c2:#2a3d4e}
+.slat:nth-child(3){--c1:#35495d;--c2:#233343}
+.slat:nth-child(4){--c1:#3a5870;--c2:#27394a}
+.slat:nth-child(5){--c1:#33485c;--c2:#22313f}
+.slat:nth-child(6){--c1:#3d566d;--c2:#2a3d4e}
+.slat:nth-child(7){--c1:#35495d;--c2:#233343}
+.slat.on{flex:6.5;--c1:#2c86c4;--c2:#35495d;box-shadow:0 30px 50px -20px rgba(44,134,196,.55)}
+.slat::after{content:"";position:absolute;left:50%;bottom:0;width:10px;height:26px;background:rgba(255,255,255,.4);border-radius:0 0 8px 8px;transform:translateX(-50%)}
+.slat .n{position:absolute;top:1.3rem;left:0;right:0;text-align:center;font:700 .85rem var(--body);letter-spacing:.14em;color:var(--glass);transition:.4s}
+.slat.on .n{left:2rem;text-align:left;color:#fff;opacity:.85}
+.slat .vt{position:absolute;left:50%;top:5rem;bottom:3.5rem;transform:translateX(-50%);writing-mode:vertical-rl;font:700 1.35rem var(--head);letter-spacing:.01em;white-space:nowrap;display:flex;align-items:center;transition:opacity .35s;opacity:1}
+.slat.on .vt{opacity:0;pointer-events:none}
+.slat .full{position:absolute;inset:0;padding:4.2rem 2.2rem 2.4rem;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transform:translateX(20px);transition:opacity .4s,transform .5s;pointer-events:none;min-width:360px}
+.slat.on .full{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
+.slat .ph{position:absolute;top:3.6rem;right:2.2rem;width:150px;height:150px;border-radius:50%;border:5px solid #fff;overflow:hidden;box-shadow:0 18px 30px -10px rgba(0,0,0,.6);background:var(--navy-2)}
+.slat .ph img{width:100%;height:100%;object-fit:cover}
+.slat .ph::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(255,255,255,.55);animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slat h3{font-size:clamp(2rem,3.6vw,3.2rem);font-weight:800;max-width:11ch;margin-bottom:1.4rem}
+.slat .go{align-self:flex-start;display:inline-flex;align-items:center;gap:.7rem;background:#fff;color:var(--navy);padding:.8rem 1.3rem;border-radius:100px;font-weight:700;font-size:.92rem;transition:.25s}
+.slat .go:hover{background:var(--glass);color:var(--ink)}
+.slat:not(.on):hover{--c1:#4a6a86}
 
-/* trust: one big window */
-.trust{padding:7rem 0;background:linear-gradient(180deg,var(--mist),#fff)}
-.trust .head{text-align:center;max-width:720px;margin:0 auto 3.2rem}
+/* trust: orbit around the logo */
+.trust{padding:7rem 0 6.5rem;background:radial-gradient(circle at 50% 58%,#fff 0,var(--mist) 55%,var(--mist-2) 100%);overflow:hidden}
+.trust .head{text-align:center;max-width:720px;margin:0 auto 3.4rem}
 .trust h2{font-size:clamp(2rem,4vw,3.3rem);color:var(--navy);margin-top:.8rem}
-.window{border:14px solid var(--navy);border-radius:10px 10px 4px 4px;background:var(--navy);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;box-shadow:0 40px 60px -30px rgba(27,42,56,.55);position:relative}
-.window::after{content:"";position:absolute;left:-30px;right:-30px;bottom:-34px;height:20px;background:var(--navy-2);border-radius:3px;z-index:-1}
-.pane{background:linear-gradient(135deg,#f4f9fd 0,#cfe3f2 100%);padding:2.4rem 1.8rem;min-height:230px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
-.pane::before{content:"";position:absolute;top:-40%;left:-60%;width:40%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);transform:rotate(18deg);transition:.9s}
-.pane:hover::before{left:130%}
-.pane svg{width:52px;height:52px;stroke:var(--navy);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:auto}
-.pane b{font:800 1.5rem var(--head);color:var(--navy);line-height:1.1;letter-spacing:-.01em}
-.pane i{position:absolute;right:1.2rem;top:1rem;font:700 .8rem var(--body);font-style:normal;color:var(--glass-d);letter-spacing:.1em}
+.orbit{display:grid;grid-template-columns:1fr 310px 1fr;gap:64px;align-items:center}
+.orbit ul{list-style:none;display:grid;gap:1.4rem}
+.orbit li a{position:relative;display:flex;align-items:center;gap:1rem;background:#fff;border-radius:100px;padding:.7rem 1.6rem .7rem .7rem;box-shadow:0 18px 30px -18px rgba(27,42,56,.45);transition:.35s;border:2px solid transparent}
+.orbit li a:hover{border-color:var(--glass);transform:translateY(-4px)}
+.orbit .l li a{flex-direction:row-reverse;padding:.7rem .7rem .7rem 1.6rem;justify-content:flex-start}
+.orbit .l li a{justify-content:flex-start}
+.orbit .ic{flex:none;width:62px;height:62px;border-radius:50%;background:var(--navy);display:grid;place-items:center;transition:.35s}
+.orbit li a:hover .ic{background:var(--glass-d);transform:rotate(-12deg) scale(1.06)}
+.orbit .ic svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.orbit b{font:800 1.25rem var(--head);color:var(--navy);letter-spacing:-.01em;line-height:1.1}
+.orbit i{display:none}
+.orbit .l li:nth-child(2){transform:translateX(-36px)}
+.orbit .r li:nth-child(2){transform:translateX(36px)}
+.orbit li a::after{content:"";position:absolute;top:50%;height:2px;width:64px;background:repeating-linear-gradient(90deg,var(--glass-d) 0 6px,transparent 6px 12px)}
+.orbit .l li a::after{right:-66px}
+.orbit .r li a::after{left:-66px}
+.orbit .l li:nth-child(2) a::after,.orbit .r li:nth-child(2) a::after{width:100px}
+.orbit .l li:nth-child(2) a::after{right:-102px}
+.orbit .r li:nth-child(2) a::after{left:-102px}
+.core{position:relative;width:310px;height:310px;display:grid;place-items:center}
+.core .disc{position:relative;z-index:2;width:236px;height:236px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 30px 50px -20px rgba(27,42,56,.55)}
+.core .disc img{width:150px;height:auto}
+.core .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed var(--glass-d);animation:spin 40s linear infinite;opacity:.8}
+.core .ring.r2{inset:-26px;border:1.5px solid rgba(44,134,196,.28);animation:none}
 
 /* steps: drip line */
 .steps{padding:7rem 0;position:relative}
@@ -203,20 +233,24 @@ footer a:hover{color:var(--glass-d)}
   .menu.open .sub a{color:#c4d3e0}
   .about .grid,.steps .grid,.voices .grid,.quote .grid{grid-template-columns:1fr;gap:2.5rem}
   .steps .sticky{position:static}
-  .window{grid-template-columns:1fr 1fr}
   .fgrid{grid-template-columns:1fr 1fr}
   .hero .tag{display:none}
-  .item{grid-template-columns:44px 1fr 90px 0}
-  .item .go{display:none}
-  .item .ph{width:80px;height:80px;opacity:1;transform:none}
+  .blinds{flex-direction:column;height:auto}.rail{display:none}
+  .slat,.slat.on{flex:none;border-radius:14px}.slat::after{display:none}
+  .slat .vt{display:none}.slat .n{position:absolute;top:1rem;left:1.2rem;text-align:left}
+  .slat .full{position:static;opacity:1;transform:none;pointer-events:auto;min-width:0;padding:3rem 1.3rem 1.4rem;min-height:170px}
+  .slat .ph{width:84px;height:84px;top:1rem;right:1.2rem}.slat .ph::after{display:none}
+  .slat h3{font-size:1.7rem;margin-bottom:1rem;max-width:12ch}
+  .orbit{grid-template-columns:1fr;gap:2rem}
+  .core{margin:0 auto;order:-1;width:260px;height:260px}.core .disc{width:200px;height:200px}.core .disc img{width:126px}
+  .orbit li:nth-child(n) {transform:none!important}.orbit li a::after{display:none}
+  .orbit .l li a{flex-direction:row;padding:.7rem 1.6rem .7rem .7rem}
 }
 @media(max-width:600px){
-  .window{grid-template-columns:1fr;border-width:10px}
   .fgrid{grid-template-columns:1fr}
   .brand img{height:64px}
   .strip .wrap{justify-content:center;text-align:center}
   .hero .wrap{padding-top:9rem}
-  .item small{display:none}
   .track{padding-left:4.6rem}.step .dot{left:-4.6rem;width:50px;height:50px}.track::before{left:23px}
   form.card{padding:1.8rem}
 }
@@ -304,31 +338,19 @@ footer a:hover{color:var(--glass-d)}
       <div><span class="eyebrow">Residential &amp; Commercial</span><h2>What we clean for you</h2></div>
       <a class="btn btn-line" href="https://calgarywindowcleaning.ca/estimate/">Get a Free Quote</a>
     </div>
-    <div class="list rv">
-      <a class="item" href="https://calgarywindowcleaning.ca/power-washing/">
-        <span class="n">01</span><h3>Pressure Washing</h3>
-        <span class="ph"><img src="images/service4.png" alt="Pressure washing a wooden deck"></span><span class="go">&rarr;</span>
-      </a>
-      <a class="item" href="https://calgarywindowcleaning.ca/low-rise-window-cleaning/">
-        <span class="n">02</span><h3>Commercial Window Cleaning</h3>
-        <span class="ph"><img src="images/service3.png" alt="Cleaning a storefront entrance"></span><span class="go">&rarr;</span>
-      </a>
-      <a class="item" href="https://calgarywindowcleaning.ca/window-cleaning/">
-        <span class="n">03</span><h3>Home Cleaning</h3>
-        <span class="ph"><img src="images/service5.png" alt="Cleaning a bathroom sink with gloves and a spray bottle"></span><span class="go">&rarr;</span>
-      </a>
-      <a class="item" href="https://calgarywindowcleaning.ca/window-cleaning/">
-        <span class="n">04</span><h3>Window Cleaning</h3>
-        <span class="ph"><img src="images/service2.png" alt="Clean residential windows"></span><span class="go">&rarr;</span>
-      </a>
-      <a class="item" href="https://calgarywindowcleaning.ca/gutter-cleaning/">
-        <span class="n">05</span><h3>Gutter Cleaning</h3>
-        <span class="ph"><img src="images/service1.png" alt="Gutter full of leaves"></span><span class="go">&rarr;</span>
-      </a>
-      <a class="item" href="https://calgarywindowcleaning.ca/post-construction-cleaning/">
-        <span class="n">06</span><h3>Post Construction Window Cleaning</h3>
-        <span class="ph"><img src="images/service-post-construction.jpg" alt="Post construction window cleaning" onerror="this.replaceWith(Object.assign(document.createElementNS('http://www.w3.org/2000/svg','svg'),{innerHTML:'<rect x=&quot;8&quot; y=&quot;8&quot; width=&quot;32&quot; height=&quot;32&quot; rx=&quot;2&quot;/><path d=&quot;M24 8v32M8 24h32&quot;/>'}))"></span><span class="go">&rarr;</span>
-      </a>
+    <div class="blinds rv"><div class="rail"></div>
+      <div class="slat" tabindex="0"><span class="n">01</span><span class="vt">Pressure Washing</span>
+        <div class="full"><span class="ph"><img src="images/service5.png" alt="Pressure washing a wooden deck"></span><h3>Pressure Washing</h3><a class="go" href="https://calgarywindowcleaning.ca/power-washing/">View service &rarr;</a></div></div>
+      <div class="slat" tabindex="0"><span class="n">02</span><span class="vt">Commercial Window Cleaning</span>
+        <div class="full"><span class="ph"><img src="images/service4.png" alt="Cleaning a storefront entrance"></span><h3>Commercial Window Cleaning</h3><a class="go" href="https://calgarywindowcleaning.ca/low-rise-window-cleaning/">View service &rarr;</a></div></div>
+      <div class="slat" tabindex="0"><span class="n">03</span><span class="vt">Home Cleaning</span>
+        <div class="full"><span class="ph"><img src="images/service6.png" alt="Cleaning a bathroom sink with gloves and a spray bottle"></span><h3>Home Cleaning</h3><a class="go" href="https://calgarywindowcleaning.ca/window-cleaning/">View service &rarr;</a></div></div>
+      <div class="slat" tabindex="0"><span class="n">04</span><span class="vt">Window Cleaning</span>
+        <div class="full"><span class="ph"><img src="images/service3.png" alt="Clean residential windows"></span><h3>Window Cleaning</h3><a class="go" href="https://calgarywindowcleaning.ca/window-cleaning/">View service &rarr;</a></div></div>
+      <div class="slat" tabindex="0"><span class="n">05</span><span class="vt">Gutter Cleaning</span>
+        <div class="full"><span class="ph"><img src="images/service2.png" alt="Gutter full of leaves"></span><h3>Gutter Cleaning</h3><a class="go" href="https://calgarywindowcleaning.ca/gutter-cleaning/">View service &rarr;</a></div></div>
+      <div class="slat" tabindex="0"><span class="n">06</span><span class="vt">Post Construction Window Cleaning</span>
+        <div class="full"><span class="ph"><img src="images/service-post-construction.jpg" alt="Squeegee cleaning a window beside a construction site"></span><h3>Post Construction Window Cleaning</h3><a class="go" href="https://calgarywindowcleaning.ca/post-construction-cleaning/">View service &rarr;</a></div></div>
     </div>
   </div>
 </section>
@@ -337,19 +359,18 @@ footer a:hover{color:var(--glass-d)}
 <section class="trust">
   <div class="wrap">
     <div class="head rv"><span class="eyebrow">Why Hundreds of Customers Trust Us</span><h2>Six reasons the neighbours keep calling</h2></div>
-    <div class="window rv">
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>01</i>
-        <svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="7"/><path d="M9 41c1-9 7-14 15-14s14 5 15 14"/></svg><b>Fully-Trained staff</b></a>
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>02</i>
-        <svg viewBox="0 0 48 48"><path d="M8 14h32v8H8zM14 22v18M34 22v18M14 40h20"/></svg><b>Quality cleaning tool</b></a>
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>03</i>
-        <svg viewBox="0 0 48 48"><path d="M27 4L10 27h12l-3 17 19-25H26z"/></svg><b>Fast effective service</b></a>
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>04</i>
-        <svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 5v9M33 5v9"/></svg><b>6-day a week service</b></a>
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>05</i>
-        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M29 17c-1-2-3-3-5-3-3 0-5 2-5 4 0 6 11 3 11 9 0 2-2 4-6 4-3 0-5-1-6-3M24 10v4M24 34v4"/></svg><b>Affordable pricing</b></a>
-      <a class="pane" href="https://calgarywindowcleaning.ca/about-us/"><i>06</i>
-        <svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6 17-15 21C15 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/></svg><b>Insured &amp; bonded</b></a>
+    <div class="orbit rv">
+      <ul class="l">
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="7"/><path d="M9 41c1-9 7-14 15-14s14 5 15 14"/></svg></span><b>Fully-Trained staff</b></a></li>
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><path d="M8 14h32v8H8zM14 22v18M34 22v18M14 40h20"/></svg></span><b>Quality cleaning tool</b></a></li>
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><path d="M27 4L10 27h12l-3 17 19-25H26z"/></svg></span><b>Fast effective service</b></a></li>
+      </ul>
+      <div class="core"><div class="ring r2"></div><div class="ring"></div><div class="disc"><img src="images/logo.png" alt="ASL Services, spotless since 2003"></div></div>
+      <ul class="r">
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M15 5v9M33 5v9"/></svg></span><b>6-day a week service</b></a></li>
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M29 17c-1-2-3-3-5-3-3 0-5 2-5 4 0 6 11 3 11 9 0 2-2 4-6 4-3 0-5-1-6-3M24 10v4M24 34v4"/></svg></span><b>Affordable pricing</b></a></li>
+        <li><a href="https://calgarywindowcleaning.ca/about-us/"><span class="ic"><svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6 17-15 21C15 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/></svg></span><b>Insured &amp; bonded</b></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -471,6 +492,12 @@ b.onclick=function(){var o=m.classList.toggle('open');b.setAttribute('aria-expan
 // reveal on scroll
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+// service blinds
+var sl=document.querySelectorAll('.slat');
+function openSlat(s){sl.forEach(function(x){x.classList.toggle('on',x===s)})}
+sl.forEach(function(s){s.addEventListener('mouseenter',function(){if(innerWidth>980)openSlat(s)});s.addEventListener('focus',function(){openSlat(s)});s.addEventListener('click',function(){openSlat(s)})});
+openSlat(sl[0]);
 
 // testimonials
 var tabs=document.querySelectorAll('.names button'),qs=document.querySelectorAll('.stage blockquote'),cur=0,timer;
